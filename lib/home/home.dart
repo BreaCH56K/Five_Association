@@ -11,6 +11,7 @@ import 'package:rh_app/database/receitas/receitas_database.dart';
 import 'package:rh_app/database/receitas/receitas_model.dart';
 import 'package:rh_app/database/receitas/total_receitas_database.dart';
 import 'package:rh_app/database/receitas/total_receitas_model.dart';
+import 'package:rh_app/home/drawer.dart';
 import 'package:rh_app/pages/historico.dart';
 
 class Home extends StatefulWidget {
@@ -21,6 +22,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _despesasController = TextEditingController();
   final TextEditingController _receitasController = TextEditingController();
@@ -279,7 +281,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> salvarDespesaNoBanco() async {
-    String dataAtual = DateFormat('dd/MM/yyyy – hh:mm').format(DateTime.now());
+    String dataAtual = DateFormat('dd/MM/yyyy – HH:mm').format(DateTime.now());
 
     DespesaModel despesaModel = DespesaModel(
       valorDespesa: double.tryParse(_despesasController.text),
@@ -315,7 +317,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> salvarReceitasNoBanco() async {
-    String dataAtual = DateFormat('dd/MM/yyyy - hh:mm').format(DateTime.now());
+    String dataAtual = DateFormat('dd/MM/yyyy - HH:mm').format(DateTime.now());
 
     ReceitaModel receitaModel = ReceitaModel(
       valorReceita: double.tryParse(_receitasController.text),
@@ -417,7 +419,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       resizeToAvoidBottomInset: false,
+      drawer: gavetaVertical(),
       body: LayoutBuilder(
         builder: (context, constraints) => Container(
           decoration: const BoxDecoration(
@@ -550,12 +554,12 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Historico()));
+                    MaterialPageRoute(builder: (context) => const Historico()));
               },
             ),
             IconButton(
               icon: const Icon(Icons.menu),
-              onPressed: () {},
+              onPressed: () => scaffoldKey.currentState?.openDrawer(),
             ),
           ],
         ),

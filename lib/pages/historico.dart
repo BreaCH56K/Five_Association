@@ -43,11 +43,20 @@ class _HistoricoState extends State<Historico> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Historico"),
-        backgroundColor: Colors.orange,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+        automaticallyImplyLeading: true,
+        title: const Text(
+          'Histórico',
+          textAlign: TextAlign.center,
+        ),
+        centerTitle: true, // Essa propriedade irá centralizar o título
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.orange, Colors.red],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
         ),
       ),
       body: LayoutBuilder(
@@ -95,7 +104,10 @@ Widget itemHistorico(data, index, context) {
                             height: 40,
                           ),
                         ),
-                        Text('R\$ ${valor?.toStringAsFixed(2)}'),
+                        Text(
+                          'R\$ ${valor?.toStringAsFixed(2)}',
+                          style: const TextStyle(fontSize: 20),
+                        ),
                       ],
                     ),
                   ),
@@ -116,7 +128,10 @@ Widget itemHistorico(data, index, context) {
                             height: 40,
                           ),
                         ),
-                        Text('R\$ ${valor?.toStringAsFixed(2)}'),
+                        Text(
+                          'R\$ ${valor?.toStringAsFixed(2)}',
+                          style: const TextStyle(fontSize: 20),
+                        ),
                       ],
                     ),
                   ),

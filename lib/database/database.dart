@@ -32,6 +32,7 @@ class BancoDeDados {
     await db.execute(_totalReceitas);
     await db.execute(_insertTotalDespesas);
     await db.execute(_insertTotalReceitas);
+    await db.execute(_categoriasDepesas);
   }
 
   String get _despesas => '''
@@ -79,5 +80,12 @@ class BancoDeDados {
 
   String get _insertTotalReceitas => '''
         INSERT INTO totalReceitas (id_totalReceitas, total_receitas) VALUES (1, 0);
+  ''';
+
+  String get _categoriasDepesas => '''
+        CREATE TABLE categoriaDepesas(
+          id_categoriaDepesas INTEGER PRIMARY KEY AUTOINCREMENT,
+          categoriaDepesas TEXT
+        );
   ''';
 }
