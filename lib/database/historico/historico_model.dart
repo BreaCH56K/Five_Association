@@ -3,12 +3,14 @@ class HistoricoModel {
   double? valor;
   String data;
   String tipo;
+  String? categoria;
 
   HistoricoModel({
     this.idHistorico,
     required this.valor,
     required this.data,
     required this.tipo,
+    required this.categoria,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,6 +18,7 @@ class HistoricoModel {
       'valor': valor,
       'data': data,
       'tipo': tipo,
+      'categoria': categoria,
     };
   }
 
@@ -25,6 +28,7 @@ class HistoricoModel {
       valor: map['valor'],
       data: map['data'],
       tipo: map['tipo'],
+      categoria: map['categoria'],
     );
   }
 }

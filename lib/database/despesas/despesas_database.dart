@@ -1,7 +1,7 @@
-import 'package:rh_app/database/database.dart';
-import 'package:rh_app/database/despesas/despesas_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
+import 'package:tech_finances/database/database.dart';
+import 'package:tech_finances/database/despesas/despesas_model.dart';
 
 class DespesaDatabase extends BancoDeDados {
   Future<void> insertDespesa(DespesaModel despesaModel) async {
@@ -58,6 +58,7 @@ class DespesaDatabase extends BancoDeDados {
           idDespesa: maps[i]['id_despesa'],
           valorDespesa: maps[i]['valor_despesa'],
           dataDespesa: maps[i]['data_despesa'],
+          categoria: maps[i]['categoria'],
         );
       },
     );
@@ -78,6 +79,7 @@ class DespesaDatabase extends BancoDeDados {
           idDespesa: maps[i]['id_despesas'],
           valorDespesa: maps[i]['valor_despesa'],
           dataDespesa: maps[i]['data_despesa'],
+          categoria: maps[i]['categoria'],
         );
       },
     );

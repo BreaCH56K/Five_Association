@@ -18,7 +18,7 @@ class BancoDeDados {
 
   _initDatabase() async {
     return await openDatabase(
-      join(await getDatabasesPath(), 'five18.db'),
+      join(await getDatabasesPath(), 'five28.db'),
       version: 1,
       onCreate: _onCreate,
     );
@@ -28,18 +28,16 @@ class BancoDeDados {
     await db.execute(_despesas);
     await db.execute(_receitas);
     await db.execute(_historico);
-    await db.execute(_totalDespesas);
-    await db.execute(_totalReceitas);
-    await db.execute(_insertTotalDespesas);
-    await db.execute(_insertTotalReceitas);
     await db.execute(_categoriasDepesas);
+    await db.execute(_categoriasReceitas);
   }
 
   String get _despesas => '''
       CREATE TABLE despesas (
         id_despesa INTEGER PRIMARY KEY AUTOINCREMENT,
         valor_despesa REAL,
-        data_despesa TEXT
+        data_despesa TEXT,
+        categoria TEXT
       );
   ''';
 
@@ -47,7 +45,8 @@ class BancoDeDados {
       CREATE TABLE receitas (
         id_receita INTEGER PRIMARY KEY AUTOINCREMENT,
         valor_receita REAL,
-        data_receita TEXT
+        data_receita TEXT,
+        categoria TEXT
       );
   ''';
 
@@ -56,36 +55,22 @@ class BancoDeDados {
         id_historico INTEGER PRIMARY KEY AUTOINCREMENT,
         valor REAL,
         data TEXT,
-        tipo TEXT
+        tipo TEXT,
+        categoria TEXT
       );
-  ''';
-
-  String get _totalDespesas => '''
-      CREATE TABLE totalDespesas (
-        id_totalDespesas INTEGER PRIMARY KEY AUTOINCREMENT,
-        total_despesas REAL
-      );
-  ''';
-
-  String get _totalReceitas => '''
-      CREATE TABLE totalReceitas (
-        id_totalReceitas INTEGER PRIMARY KEY AUTOINCREMENT,
-        total_receitas REAL     
-      );
-  ''';
-
-  String get _insertTotalDespesas => '''
-      INSERT INTO totalDespesas (id_totalDespesas, total_despesas) VALUES (1, 0);
-''';
-
-  String get _insertTotalReceitas => '''
-        INSERT INTO totalReceitas (id_totalReceitas, total_receitas) VALUES (1, 0);
   ''';
 
   String get _categoriasDepesas => '''
-        CREATE TABLE categoriaDepesas(
-          id_categoriaDepesas INTEGER PRIMARY KEY AUTOINCREMENT,
-          categoriaDepesas TEXT
+        CREATE TABLE categoriaDespesas (
+          id_categoriaDespesas INTEGER PRIMARY KEY AUTOINCREMENT,
+          categoriaDespesas TEXT
+        );
+  ''';
+
+  String get _categoriasReceitas => '''
+        CREATE TABLE categoriaReceitas (
+          id_categoriaReceitas INTEGER PRIMARY KEY AUTOINCREMENT,
+          categoriaReceitas TEXT
         );
   ''';
 }

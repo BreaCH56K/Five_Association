@@ -1,7 +1,7 @@
-import 'package:rh_app/database/database.dart';
-import 'package:rh_app/database/historico/historico_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
+import 'package:tech_finances/database/database.dart';
+import 'package:tech_finances/database/historico/historico_model.dart';
 
 class HistoricoDatabase extends BancoDeDados {
   Future<void> insertHistorico(HistoricoModel historicoModel) async {
@@ -59,6 +59,7 @@ class HistoricoDatabase extends BancoDeDados {
           valor: maps[i]['valor'],
           data: maps[i]['data'],
           tipo: maps[i]['tipo'],
+          categoria: maps[i]['categoria'],
         );
       },
     );
@@ -80,6 +81,7 @@ class HistoricoDatabase extends BancoDeDados {
           valor: maps[i]['valor'],
           data: maps[i]['data'],
           tipo: maps[i]['tipo'],
+          categoria: maps[i]['categoria'],
         );
       },
     );

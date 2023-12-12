@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rh_app/home/home.dart';
+import 'package:tech_finances/home/home.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tech_finances/database/categorias/cat_despesas/categoria_despesas_database.dart';
-import 'package:tech_finances/database/categorias/cat_despesas/categoria_despesas_model.dart';
+import 'package:tech_finances/database/categorias/cat_receitas/categoria_receitas_database.dart';
+import 'package:tech_finances/database/categorias/cat_receitas/categoria_receitas_model.dart';
 
-class CategoriasDespesas extends StatefulWidget {
-  const CategoriasDespesas({super.key});
+class CategoriasReceitas extends StatefulWidget {
+  const CategoriasReceitas({super.key});
 
   @override
-  State<CategoriasDespesas> createState() => _CategoriasDespesasState();
+  State<CategoriasReceitas> createState() => _CategoriasReceitasState();
 }
 
-class _CategoriasDespesasState extends State<CategoriasDespesas> {
+class _CategoriasReceitasState extends State<CategoriasReceitas> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _catDespesasControler = TextEditingController();
-  List<CategoriasDespesasModel> listCatDespesas = [];
+  final TextEditingController _catReceitasControler = TextEditingController();
+  List<CategoriasReceitasModel> listCatReceitas = [];
 
   @override
   void initState() {
@@ -21,20 +21,20 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
   }
 
   Future<void> gerarListadoBanco() async {
-    CatDespesaDatabase catDespesaDatabase = CatDespesaDatabase();
+    CatReceitaDatabase catReceitaDatabase = CatReceitaDatabase();
     setState(() {
-      listCatDespesas.clear();
+      listCatReceitas.clear();
     });
 
-    List<CategoriasDespesasModel> list =
-        await catDespesaDatabase.recuperarDadosCatDespesas();
+    List<CategoriasReceitasModel> list =
+        await catReceitaDatabase.recuperarDadosCatReceitas();
 
     for (var element in list) {
       setState(() {
-        listCatDespesas.add(
-          CategoriasDespesasModel(
-            idCategoriaDespesas: element.idCategoriaDespesas,
-            categoriasDespesas: element.categoriasDespesas,
+        listCatReceitas.add(
+          CategoriasReceitasModel(
+            idCategoriaReceitas: element.idCategoriaReceitas,
+            categoriaReceitas: element.categoriaReceitas,
           ),
         );
       });
@@ -42,20 +42,20 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
   }
 
   Future<void> salvarnoBanco() async {
-    CatDespesaDatabase catDespesaDatabase = CatDespesaDatabase();
-    CategoriasDespesasModel categoriasDepesasModel = CategoriasDespesasModel(
-      categoriasDespesas: _catDespesasControler.text,
+    CatReceitaDatabase catReceitaDatabase = CatReceitaDatabase();
+    CategoriasReceitasModel categoriasDepesasModel = CategoriasReceitasModel(
+      categoriaReceitas: _catReceitasControler.text,
     );
 
-    catDespesaDatabase.insertCatDespesa(categoriasDepesasModel);
+    catReceitaDatabase.insertCatReceita(categoriasDepesasModel);
 
-    _catDespesasControler.text = '';
+    _catReceitasControler.text = '';
   }
 
   bool verificaSeCatExiste(String cat) {
     bool x = false;
-    for (var element in listCatDespesas) {
-      if (cat == element.categoriasDespesas) {
+    for (var element in listCatReceitas) {
+      if (cat == element.categoriaReceitas) {
         x = true;
       }
     }
@@ -69,7 +69,7 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
         appBar: AppBar(
           automaticallyImplyLeading: true,
           title: const Text(
-            'Categorias de Despesas',
+            'Categorias de Receitas',
             textAlign: TextAlign.center,
           ),
           centerTitle: true, // Essa propriedade irá centralizar o título
@@ -94,7 +94,7 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
                 height: 10,
               ),
               const Text(
-                'Insira a categoria de despesa que deseja adicionar: ',
+                'Insira a categoria de receita que deseja adicionar: ',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Form(
@@ -106,7 +106,7 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
                       if (value == null || value.isEmpty) {
                         return 'Este campo é obrigatório!';
                       }
-                      if (verificaSeCatExiste(_catDespesasControler.text)) {
+                      if (verificaSeCatExiste(_catReceitasControler.text)) {
                         return 'Esta categoria já existe!';
                       }
                       return null;
@@ -114,7 +114,7 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
                     textAlign: TextAlign.start,
                     textAlignVertical: TextAlignVertical.center,
                     cursorColor: Colors.black,
-                    controller: _catDespesasControler,
+                    controller: _catReceitasControler,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 10),
@@ -167,13 +167,13 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
                 height: 10,
               ),
               const Text(
-                'Suas Categorias de Despesas: ',
+                'Suas Categorias de Receitas: ',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               const Divider(),
               Expanded(
                 child: ListView.builder(
-                  itemCount: listCatDespesas.length,
+                  itemCount: listCatReceitas.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -188,14 +188,14 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
                                 const Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Icon(
-                                    Icons.money_off,
+                                    Icons.monetization_on_outlined,
                                     color: Colors.grey,
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(5),
                                   child: Text(
-                                    '${listCatDespesas[index].categoriasDespesas}',
+                                    '${listCatReceitas[index].categoriaReceitas}',
                                     style: const TextStyle(
                                       fontSize: 22,
                                       color: Color.fromARGB(255, 57, 57, 57),
@@ -204,10 +204,10 @@ class _CategoriasDespesasState extends State<CategoriasDespesas> {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    CatDespesaDatabase catDespesaDatabase =
-                                        CatDespesaDatabase();
-                                    catDespesaDatabase.deleteCatDespesa(
-                                        '${listCatDespesas[index].categoriasDespesas}');
+                                    CatReceitaDatabase catReceitaDatabase =
+                                        CatReceitaDatabase();
+                                    catReceitaDatabase.deleteCatReceita(
+                                        '${listCatReceitas[index].categoriaReceitas}');
                                     gerarListadoBanco();
                                   },
                                   icon: const Icon(

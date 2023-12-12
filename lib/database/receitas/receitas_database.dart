@@ -1,7 +1,7 @@
-import 'package:rh_app/database/database.dart';
-import 'package:rh_app/database/receitas/receitas_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
+import 'package:tech_finances/database/database.dart';
+import 'package:tech_finances/database/receitas/receitas_model.dart';
 
 class ReceitaDatabase extends BancoDeDados {
   Future<void> insertReceita(ReceitaModel receitaModel) async {
@@ -58,6 +58,7 @@ class ReceitaDatabase extends BancoDeDados {
           idReceita: maps[i]['id_receita'],
           valorReceita: maps[i]['valor_receita'],
           dataReceita: maps[i]['data_receita'],
+          categoria: maps[i]['categoria'],
         );
       },
     );
@@ -78,6 +79,7 @@ class ReceitaDatabase extends BancoDeDados {
           idReceita: maps[i]['id_receitas'],
           valorReceita: maps[i]['valor_receita'],
           dataReceita: maps[i]['data_receita'],
+          categoria: maps[i]['categoria'],
         );
       },
     );

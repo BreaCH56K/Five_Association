@@ -1,23 +1,22 @@
-class CategoriasDepesasModel {
-  int? id_categoriaDepesas;
-  String? CategoriasDepesas;
+class CategoriasDespesasModel {
+  int? idCategoriaDespesas;
+  String? categoriasDespesas;
 
-  CategoriasDepesasModel({
-    this.id_categoriaDepesas,
-    this.CategoriasDepesas,
+  CategoriasDespesasModel({
+    this.idCategoriaDespesas,
+    this.categoriasDespesas,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'id_categoriaDespesas': id_categoriaDepesas,
-      'categoriaDespesas': CategoriasDepesas,
+      'categoriaDespesas': categoriasDespesas,
     };
   }
 
-  factory CategoriasDepesasModel.fromMap(Map<String, dynamic> map) {
-    return CategoriasDepesasModel(
-      id_categoriaDepesas: map['id_categoriaDespesas'],
-      CategoriasDepesas: map['categoriaDespesas'],
+  factory CategoriasDespesasModel.fromMap(Map<String, dynamic> map) {
+    return CategoriasDespesasModel(
+      idCategoriaDespesas: map['id_categoriaDespesas'],
+      categoriasDespesas: map['categoriaDespesas'],
     );
   }
 }

@@ -1,5 +1,5 @@
-name: rh_app
-description: A new Flutter project.
+name: tech_finances
+description: Projeto flutter destinado a disciplina Projeto Integrador.
 publish_to: 'none'
 version: 0.1.0
 
@@ -13,6 +13,10 @@ dependencies:
   path_provider: ^2.1.1
   path:
   intl: ^0.17.0
+  pie_chart: ^5.4.0
+  syncfusion_flutter_charts: ^20.0.1
+
+
 
 dev_dependencies:
   flutter_test:
