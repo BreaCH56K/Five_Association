@@ -265,9 +265,8 @@ class HomeState extends State<Home> {
   }
 
   Future<void> salvarDespesaNoBanco() async {
-    //String dataAtual = DateFormat('dd/MM/yyyy – HH:mm').format(DateTime.now());
-    String dataAtual =
-        '${_dataDespesaControllerTest.text} - ${_horaDespesaControllerTest.text}';
+    String dataAtual = DateFormat('dd/MM/yyyy – HH:mm').format(DateTime.now());
+
     if (dropdownValueDespesas == "Selecione uma Categoria") {
       dropdownValueDespesas = "Não Informada";
     }
@@ -292,9 +291,8 @@ class HomeState extends State<Home> {
   }
 
   Future<void> salvarReceitasNoBanco() async {
-    //String dataAtual = DateFormat('dd/MM/yyyy - HH:mm').format(DateTime.now());
-    String dataAtual =
-        '${_dataReceitaControllerTest.text} - ${_horaReceitaControllerTest.text}';
+    String dataAtual = DateFormat('dd/MM/yyyy - HH:mm').format(DateTime.now());
+
     if (dropdownValueReceitas == "Selecione uma Categoria") {
       dropdownValueReceitas = "Não informada";
     }
@@ -490,82 +488,6 @@ class HomeState extends State<Home> {
                                   }).toList(),
                                 ),
                                 const SizedBox(height: 20.0),
-                                TextFormField(
-                                  controller: _dataReceitaControllerTest,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Este campo não pode ser vazio!';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                    floatingLabelStyle:
-                                        const TextStyle(color: Colors.red),
-                                    labelText: 'Data',
-                                    hintText: 'DD/MM/AAAA',
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.amberAccent),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.blueGrey),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.blue),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.red),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 20.0),
-                                TextFormField(
-                                  controller: _horaReceitaControllerTest,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Este campo não pode ser vazio!';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                    floatingLabelStyle:
-                                        const TextStyle(color: Colors.red),
-                                    labelText: 'Hora',
-                                    hintText: 'HH:MM',
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.amberAccent),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.blueGrey),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.blue),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.red),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 20.0),
                                 ElevatedButton(
                                   style: ButtonStyle(
                                     backgroundColor:
@@ -721,82 +643,6 @@ class HomeState extends State<Home> {
                                     return DropdownMenuEntry<String>(
                                         value: value, label: value);
                                   }).toList(),
-                                ),
-                                const SizedBox(height: 20.0),
-                                TextFormField(
-                                  controller: _dataDespesaControllerTest,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Este campo não pode ser vazio!';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                    floatingLabelStyle:
-                                        const TextStyle(color: Colors.red),
-                                    labelText: 'Data',
-                                    hintText: 'DD/MM/AAAA',
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.amberAccent),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.blueGrey),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.blue),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.red),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 20.0),
-                                TextFormField(
-                                  controller: _horaDespesaControllerTest,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Este campo não pode ser vazio!';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                    floatingLabelStyle:
-                                        const TextStyle(color: Colors.red),
-                                    labelText: 'Hora',
-                                    hintText: 'HH:MM',
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.amberAccent),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.blueGrey),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.blue),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.red),
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                  ),
                                 ),
                                 const SizedBox(height: 20.0),
                                 ElevatedButton(
